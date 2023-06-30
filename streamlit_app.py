@@ -58,7 +58,7 @@ def generate_response(prompt):
         model="gpt-3.5-turbo",
         messages=[{"role": "user", "content": prompt}]
     )
-    response = completion.choices[0].message.content
+    response = chat_completion.choices[0].message.content
     return response
 
 ## Conditional display of AI generated responses as a function of user provided prompts
