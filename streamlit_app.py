@@ -54,16 +54,13 @@ with input_container:
 # Generating responses from the api
 
 def generate_response(prompt):
-    completions = openai.Completion.create(
-        engine = "gpt-3.5-turbo",
-        prompt = prompt,
-        max_tokens = 1024,
-        n=1,
-        stop=None,
-        temperature=0.5
+    completion = openai.Completion.create(
+        model="gpt-3.5-turbo",
+        prompt=prompt,
+        max_tokens=1000
     )
-    messages = completions.choices[0].text
-    return messages
+    response = completion.choices[0].message.content
+    return response
 
 ## Conditional display of AI generated responses as a function of user provided prompts
 with response_container:
