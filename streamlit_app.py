@@ -54,10 +54,9 @@ with input_container:
 # Generating responses from the api
 
 def generate_response(prompt):
-    completion = openai.Completion.create(
+    chat_completion = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
-        prompt=prompt,
-        max_tokens=1000
+        messages=[{"role": "user", "content": prompt}]
     )
     response = completion.choices[0].message.content
     return response
