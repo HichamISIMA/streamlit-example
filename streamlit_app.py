@@ -5,7 +5,7 @@ from streamlit_extras.add_vertical_space import add_vertical_space
 from embedchain import App
 import openai
 
-openai.api_key = st.secrets["OPEN_API_KEY"]
+openai.api_key = "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"
 
 st.set_page_config(page_title="HugChat - An LLM-powered Streamlit app")
 
