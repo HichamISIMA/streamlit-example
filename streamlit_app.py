@@ -2,7 +2,10 @@ import streamlit as st
 from streamlit_chat import message
 from streamlit_extras.colored_header import colored_header
 from streamlit_extras.add_vertical_space import add_vertical_space
-from hugchat import hugchat
+from embedchain import App
+import openai
+
+openai.api_key = st.secrets["OPEN_API_KEY"]
 
 st.set_page_config(page_title="HugChat - An LLM-powered Streamlit app")
 
@@ -46,8 +49,9 @@ with input_container:
 # Response output
 ## Function for taking user prompt as input followed by producing AI generated responses
 def generate_response(prompt):
-    chatbot = hugchat.ChatBot()
-    response = chatbot.chat(prompt)
+    impot_chatbot = App()
+    impot_chatbot.add("web_page", "https://www.impots.gouv.fr/particulier/questions/jai-perdu-mon-avis-dimpot-sur-le-revenu-puis-je-en-obtenir-une-copie")
+    response = impot_chatbot.query(prompt)
     return response
 
 ## Conditional display of AI generated responses as a function of user provided prompts
